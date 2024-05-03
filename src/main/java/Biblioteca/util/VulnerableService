@@ -1,0 +1,43 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class VulnerableService {
+
+    public void searchUser(String username) {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
+            statement = connection.createStatement();
+            // Vulnerabilidad de inyección SQL aquí
+            String query = "SELECT * FROM users WHERE username = '" + username + "'";
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                // Procesamiento de los resultados
+                System.out.println("User found: " + resultSet.getString("username"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar recursos
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        VulnerableService service = new VulnerableService();
+        service.searchUser("admin");  // Prueba de la vulnerabilidad
+    }
+}
