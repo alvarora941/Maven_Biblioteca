@@ -36,8 +36,25 @@ public class VulnerableService {
         }
     }
 
+    public void processTransaction(String cardNumber, String cvv) {
+        try {
+            // Lógica de procesamiento ficticia
+            if(cardNumber == null || cvv == null) {
+                throw new IllegalArgumentException("Credit card details are not complete.");
+            }
+            System.out.println("Processing transaction with card: " + cardNumber);
+        } catch (Exception e) {
+            // Exponiendo información sensible en logs
+            e.printStackTrace(); // Esta línea es potencialmente peligrosa
+        }
+    }
+
     public static void main(String[] args) {
         VulnerableService service = new VulnerableService();
         service.searchUser("admin");  // Prueba de la vulnerabilidad
+    
+        SensitiveDataExposure example = new SensitiveDataExposure();
+        example.processTransaction("1234-5678-9012-3456", "123"); // Datos de tarjeta de crédito expuestos
     }
+
 }
