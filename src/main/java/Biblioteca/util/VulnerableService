@@ -55,6 +55,21 @@ public class VulnerableService {
     
         SensitiveDataExposure example = new SensitiveDataExposure();
         example.processTransaction("1234-5678-9012-3456", "123"); // Datos de tarjeta de crédito expuestos
+
+        // Simulación de código de producción
+
+        int valorImportante = calcularValorImportante();
+
+        // Se debe eliminar o asegurar que el siguiente código no se ejecute en producción
+        // assert valorImportante > 0 : "El valor no puede ser cero o negativo";
+
+        // Continuación del flujo normal del programa
+        System.out.println("El valor importante es: " + valorImportante);
+    }
+
+    public static int calcularValorImportante() {
+        // Implementación del método que calcula algún valor
+        return 100;
     }
 
 }
