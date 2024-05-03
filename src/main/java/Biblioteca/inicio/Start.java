@@ -24,13 +24,13 @@ public class Start {
 		LibroBean libro1 = new LibroBean();
 		libro1.setEditorial("Grill");
 		libro1.setISBN("123456789");
-		libro1.setPáginas("500");
+		libro1.setPÃ¡ginas("500");
 		libro1.setTitulo("Alicia y el pais de las maravillas");
 		
 		LibroBean libro2 = new LibroBean();
 		libro2.setEditorial("Maw");
 		libro2.setISBN("987654321");
-		libro2.setPáginas("800");
+		libro2.setPÃ¡ginas("800");
 		libro2.setTitulo("Harry Potter");
 		
 		
@@ -52,7 +52,7 @@ public class Start {
 		
 		/*
 		 * **************************************************
-		 * A Ñ A D I E N D O    I N F O R M A C I Ó N
+		 * A Ã‘ A D I E N D O    I N F O R M A C I Ã“ N
 		 * **************************************************
 		 */	
 		
@@ -84,6 +84,10 @@ public class Start {
 		CreateEjemplar createEjemplar = new CreateEjemplar();
 		createEjemplar.create(ejemplar1);
 		createEjemplar.create(ejemplar2);
+
+		/*
+		* CAMBIANDO DATOS
+		+/
 		
 
 		
